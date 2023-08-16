@@ -1,0 +1,33 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group 'me.bok'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'me.bok' // groupId
+            artifactId = 'library'           // artifactId
+            version = '0.0.1-SNAPSHOT'       // version
+
+            from components.java
+        }
+    }
+}
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-autoconfigure:2.2.6.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure-processor:2.2.6.RELEASE'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
